@@ -59,3 +59,14 @@ if __name__ == '__main__':
     report = BatteryReport()
     report.add_reporter(ConsoleReporter())
     report.add_reporter(FileReporter('battery_report.txt'))
+
+    # Test cases
+    assert battery_is_ok(25, 70, 0.7, report) == True, "Test case 1 failed"
+    assert battery_is_ok(50, 85, 0, report) == False, "Test case 2 failed"
+    assert battery_is_ok(25, 85, 0.7, report) == False, "Test case 3 failed"
+    assert battery_is_ok(25, 70, 0.9, report) == False, "Test case 4 failed"
+    assert battery_is_ok(-5, 70, 0.7, report) == False, "Test case 5 failed"
+    assert battery_is_ok(25, 15, 0.7, report) == False, "Test case 6 failed"
+    assert battery_is_ok(25, 70, 0.81, report) == False, "Test case 7 failed"
+
+    print("All test cases passed!")
